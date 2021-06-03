@@ -1,13 +1,36 @@
-const fakeUser = {
-  username: 'Nicolas',
-  loggedIn: false,
-};
+const videos = [
+  {
+    title: 'First Video',
+    rating: 5,
+    comments: 2,
+    createdAt: '2 minuted ago',
+    views: 59,
+    id: 1,
+  }, {
+    title: 'Second Video',
+    rating: 5,
+    comments: 2,
+    createdAt: '2 minuted ago',
+    views: 59,
+    id: 2,
+  }, {
+    title: 'Third Video',
+    rating: 5,
+    comments: 2,
+    createdAt: '2 minuted ago',
+    views: 59,
+    id: 3,
+  },
+];
 
 export const trending = (req, res) => {
-  res.render('home', { pageTitle: 'Home', fakeUser });
+  res.render('home', { pageTitle: 'Home', videos });
 };
 export const see = (req, res) => {
-  res.render('watch', { pageTitle: 'Watch' });
+  const { id } = req.params;
+  const video = videos[id - 1];
+  //   console.log('Show video', id);
+  res.render('watch', { pageTitle: `Watchching ${video.title}` });
 };
 export const edit = (req, res) => {
   res.render('edit', { pageTitle: 'Edit' });
