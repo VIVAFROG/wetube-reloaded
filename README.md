@@ -14,3 +14,7 @@
 /videos/:id/edit -> Edit Video
 /videos/:id/delete -> Delete Video
 /videos/upload -> Upload video
+
+mongo db
+brew services start mongodb-community@4.4
+brew services stop mongodb-community@4.4
