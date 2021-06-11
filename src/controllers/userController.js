@@ -1,7 +1,7 @@
 import bcrpyt from 'bcrypt';
 import User from '../models/User';
 
-export const getJoin = (req, res) => res.render('Join', { pageTitle: 'Join' });
+export const getJoin = (req, res) => res.render('join', { pageTitle: 'Join' });
 export const postJoin = async (req, res) => {
   const {
     name, username, email, password, password2, location,
