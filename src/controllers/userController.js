@@ -129,16 +129,16 @@ export const finishGithubLogin = async (req, res) => {
     }
     req.session.loggedIn = true;
     req.session.user = user;
-    return res.redirect("/");
-  } else {
-    return res.redirect("/login");
+    return res.redirect('/');
   }
+  return res.redirect('/login');
 };
-
 
 export const logout = (req, res) => {
   req.session.destroy();
   return res.redirect('/');
 };
-export const edit = (req, res) => res.send('Edit User');
+export const getEdit = (req, res) => res.send('Edit User');
+export const postEdit = (req, res) => res.send('Edit User');
+
 export const see = (req, res) => res.send('See User');
