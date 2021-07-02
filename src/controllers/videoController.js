@@ -147,3 +147,27 @@ export const createComment = async (req, res) => {
   video.save();
   return res.status(201).json({ newCommentId: comment._id });
 };
+
+export const deleteComment = async (req, res) => {
+  const { videoId, commentId } = req.params;
+  const comment = await Comment.findById(commentId);
+  const video = await Video.findById(videoId);
+  if (!comment) {
+    console.log('comment 404');
+    return res.sendStatus(404);
+  }
+  if (!video) {
+    console.log('video 404');
+    return res.sendStatus(404);
+  }
+  if (String(req.session.user._id) !== String(comment.owner)) {
+    console.log(req.session.user._id, comment.owner);
+    console.log('session 404');
+    return res.sendStatus(404);
+  }
+
+  video.comments.remove(commentId);
+  await video.save();
+  await Comment.findByIdAndDelete(commentId);
+  return res.sendStatus(202);
+};
