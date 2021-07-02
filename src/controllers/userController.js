@@ -156,7 +156,7 @@ export const postEdit = async (req, res) => {
   const updatedUser = await User.findByIdAndUpdate(
     _id,
     {
-      avatarUrl: file ? file.path : avatarUrl,
+      avatarUrl: file ? file.location : avatarUrl,
       name,
       email,
       username,
@@ -205,10 +205,10 @@ export const postChangePassword = async (req, res) => {
 export const see = async (req, res) => {
   const { id } = req.params;
   const user = await User.findById(id).populate({
-    path: "videos",
+    path: 'videos',
     populate: {
-      path: "owner",
-      model: "User",
+      path: 'owner',
+      model: 'User',
     },
   });
   if (!user) {
