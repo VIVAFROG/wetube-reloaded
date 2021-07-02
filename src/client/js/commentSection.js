@@ -52,13 +52,10 @@ const handleDelete = async (event) => {
   const comment = event.target.parentElement;
   const { id } = comment.dataset;
   const videoId = videoContainer.dataset.id;
-  console.log('before backend');
 
   const response = await fetch(`/api/${videoId}/comment/${id}/delete`, {
     method: 'DELETE',
   });
-
-  console.log('after backend');
   if (response.status === 202) {
     comment.remove();
   }

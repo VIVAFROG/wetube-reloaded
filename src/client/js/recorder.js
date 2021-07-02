@@ -28,7 +28,6 @@ const handleStart = () => {
 
   recorder.ondataavailable = (event) => {
     videoFile = URL.createObjectURL(event.data);
-    console.log(videoFile);
     video.srcObject = null;
     video.src = videoFile;
     video.loop = true;
